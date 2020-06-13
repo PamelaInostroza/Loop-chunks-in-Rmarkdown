@@ -99,7 +99,7 @@ En particular, en estas Fichas se presenta información anual de cada Universida
 ```{r main, echo=FALSE,tidy=FALSE, eval=TRUE, results='asis', comment=''}
 out = NULL
 for (na in 1:nrow(areas)) {
-  out = c(out, knit_child('LoopArea.Rmd'))
+  out = c(out, knit_child('Script3.Rmd'))
 }
 cat(knit(text=unlist(paste(out, collapse = '\n ')), quiet=TRUE))
 ```
