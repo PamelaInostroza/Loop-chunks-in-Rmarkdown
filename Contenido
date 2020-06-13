@@ -1,0 +1,279 @@
+<br>  
+<br>  
+<br>  
+<br>  
+<br>  
+<br>  
+<br>  
+
+# `r UesG[UesG$IDU==nu,"UNIVERSIDAD"]`  
+<br>  
+
+```{r fig.width=3,fig.height=3}
+library(png)
+library(grid)
+img <- readPNG(paste0(directorio,"/logos/U",nu,".png"))
+grid.raster(img)
+```  
+
+##### Contenido 
+<br>  
+
+```{r content,results="asis",tidy=FALSE,eval=TRUE}
+  tit<-as.vector(tabla[tabla$Graph==0,"indice"])
+cat(paste0("[",tit[1],"](#introduccion)\n  \n"))
+cat(paste0("[",tit[2],"](#notasg)\n  \n"))
+cat(paste0("[",tit[3],"](#descripcion)\n  \n"))
+
+for (na in 1:nrow(areas)) {
+  name<-stri_extract_all_regex(areas$n[na], "[a-z\\.a-zA-Z]+",omit_no_match=TRUE)
+   if (length(name[[1]])==0) anchor<-gsub(" ","-",substr(sprintf(tolower(stri_trans_general(areas$AREA[na],"Latin-ASCII"))),1,40))
+  else anchor<-gsub(" ","-",substr(sprintf(tolower(paste0(name,'. ',stri_trans_general(areas$AREA[na],"Latin-ASCII")))),1,40))
+ cat(paste0("[",tit[na+3],"](#",anchor,")\n  \n"))
+}
+cat(paste0("[",tit[na+4],"](#Glosario)\n  \n"))
+
+```
+<br>    
+
+##### Lista de gráficos y tablas {#lista}  
+
+`r paste0("### ",as.vector(tabla[tabla$Graph!=0,"indice"]),collapse="  \n  \n")`   
+<br>   
+
+##### Introducción {#introduccion}
+<br>  
+
+En el marco del Plan de Fortalecimiento de las Universidades Estatales cobra especial relevancia contar con información relevante de cada una de ellas. Por este motivo, la División de Educación Superior (DIVESUP) del Ministerio de Educación encargó al Centro de Estudios la elaboración de Fichas de Información que entreguen una visión completa, integral, actualizada y comparable de las Universidades Estatales y la relación con su región. En las Fichas se recopila, sistematiza y describe información secundaria de diversas fuentes del Ministerio de Educación y de otros Ministerios e instituciones.  
+
+<br>
+En particular, en estas Fichas se presenta información anual de cada Universidad, para el periodo 2007-2016, organizada en 12 capítulos. Los primeros capítulos refieren a la oferta académica y a la matrícula: números de Programas (Capítulo 1), total de Estudiantes (Capítulo 2.a) y Estudiantes de primer año (Capítulo 2.b) de Pregrado, Postítulo y Postgrado, desagregados por Tipo de Programas, Áreas del Conocimiento OCDE, Sexo y Jornada, según corresponda. También, se presenta información de los Académicos que trabajan en estas Universidades (Capítulo 3), de los resultados de los procesos de Acreditación Institucional, de la Acreditación de Carreras y Programas (Capítulo 4), y de los resultados de las actividades de Investigación, Desarrollo e Innovación realizadas en estas instituciones (Capítulo 5). En cuanto a los Estudiantes, se presenta información de sus antecedentes académicos -PSU, NEM, y establecimiento y modalidad de Enseñanza Media- (Capítulo 6), y de algunos resultados del proceso educativo -retención y tiempo que demoran en completar las Carreras o Programas- (Capítulo 7). Respecto al financiamiento de los estudiantes y de las Universidades, se entrega información de los Beneficios y Ayudas Estudiantiles (Capítulo 9), valor de los Aranceles -real y de referencia- (Capítulo 8), y de las otras Fuentes de Ingresos (Capítulo 10). Finalmente, se presenta información de Infraestructura de la Universidad (Capítulo 11) e indicadores relevantes de la región en que se encuentra la Casa Central de cada Universidad -estudiantes y establecimientos de Enseñanza Media, otras instituciones de educación superior, e indicadores económicos y laborales- (Capítulo 12).     
+ 
+##### Notas Generales{#notasg}
+<br>  
+*Aplicable a todos los gráficos y tablas.*
+
+(1)	Se presenta información para el periodo 2007-2016. Sin embargo, para algunas categorías sólo se cuenta con información para sub-periodos, ya sea porque la información se comenzó a levantar con posterioridad al año 2007, porque aún no se cuenta con la información actualizada para los últimos años, porque los criterios de levantamiento o procesamiento han cambiado y la información actual no es comparable con la de años anteriores, o porque el instrumento (programa, beca, etc.) fue creado con posterioridad al año 2007 o se extinguió en algún año del periodo revisado.  
+
+(2)	Para algunas categorías se puede observar años con información faltante, o con cambios drásticos en magnitud. Esto podría deberse al no reporte o reporte parcial de la información, o a la no existencia de información en un determinado año.  
+
+(3)	Para que las fichas sean comparables entre Universidades, se mantuvieron gráficos que pueden no ser del todo relevantes para una institución en particular, pero si al compararla con otras (salvo por INACER, indicador no disponible para Universidades de la Región Metropolitana, por definición).  
+
+(4)	En general, la información se presenta desagregada por categorías en gráficos de barras, donde se indican los porcentajes de cada una respecto al total, incluyendo una línea de tendencia que indica la suma total de estas categorías (unidades), acompañados por tablas con la información de cada categoría en las unidades correspondiente.  
+
+(5)	Para mejorar la visualización de la tablas se presenta la siguiente información en miles (i.e., se divide por 1.000): Matrícula Total (Capítulo 2.a); Matrícula de Primer Año (Capítulo 2.b); Estudiantes según dependencia y modalidad de Enseñanza Media de egreso (Capítulo 7); Aranceles (Capítulo 9); y Estudiantes de 4° Educación Media en la Región y Ocupados por Categoría Ocupacional (Capítulo 12). La información de Matrícula Total de Postítulo y Postgrado, y de Matrícula de 1er Año se presenta con tres decimales, para poder visualizarla y mantener la misma unidad de presentación que para Matrícula Total de Pregrado. En tanto, la información de Financiamiento (Capítulo 10) se presenta en millones de pesos (i.e., se divide por 1.000.000).  
+
+(6)	Para mejorar la visualización de los gráficos no se incorporan las etiquetas con valores de las categorías que representan menos de un 5% del total.  
+
+(7)	En el caso que las categorías no sean sumables, la información se presenta como líneas de tendencia, acompañadas por tablas con la misma información.  
+
+(8)	Para algunas variables la información se presenta sólo en tablas, para facilitar su comprensión.  
+
+(9)	Para asegurar que la suma de las categorías sea igual al total, se incorporan categorías bajo "Otros", "Sin Información" o similar. En particular, en la clasificación de programas de educación superior según áreas OCDE, cuando no se posea información que permita dicha clasificación, se incluye la categoría "Sin área definida".    
+
+(10) Los Programas de Pregrado se re-categorizan según el título o grado al que eventualmente conducen: (a) Profesionales con Licenciatura previa (PLP); (b) Técnicos de Nivel Superior y Profesionales sin Licenciatura previa (TPP); y (c) Licenciados, Bachilleres, Planes Comunes o Ciclos Iniciales (LIC). Si bien completar un programa de Bachillerato, Plan Común o Ciclo Inicial no conduce a un grado académico, como una Licenciatura, eventualmente podría obtenerse.  
+
+(11) Como se elaboraron Fichas con la misma información para todas la Universidades, en algunos gráficos pueden aparecer explicaciones de categorías que no están presentes en alguna determinada Universidad, pero sí en otras.
+
+
+##### Descripción de la Universidad {#descripcion}
+<br>  
+
+**MISIÓN**: 
+`r paste0(UesG[UesG$IDU==nu,"Mision"],"  \n")`  
+<br>  
+**VISIÓN**: 
+`r paste0(UesG[UesG$IDU==nu,"Vision"],"  \n")`  
+<br>  
+**Acreditación**: 
+`r paste0(UesG[UesG$IDU==nu,"Acreditacion"],"  \n")`  
+<br>  
+**Sedes**: 
+`r paste0(UesG[UesG$IDU==nu,"Sedes"],"  \n")`  
+<br>  
+
+#### Fuentes: `r paste0(UesG[UesG$IDU==nu,"Fuentes"],"  \n")` 
+
+
+
+```{r main, echo=FALSE,tidy=FALSE, eval=TRUE, results='asis', comment=''}
+out = NULL
+for (na in 1:nrow(areas)) {
+  out = c(out, knit_child('LoopArea.Rmd'))
+}
+cat(knit(text=unlist(paste(out, collapse = '\n ')), quiet=TRUE))
+```
+<br> 
+
+##### Glosario {#Glosario}  
+<br>  
+
+**Acreditación Institucional:** Proceso voluntario, cuyo objeto es evaluar el cumplimiento del proyecto corporativo de una Institución de Educación Superior, y verificar la existencia de mecanismos eficaces de autorregulación y de aseguramiento de la calidad, así como propender al fortalecimiento de su capacidad de autorregulación y al mejoramiento continuo. Las instituciones pueden acreditarse en cinco áreas: **(1) Gestión Institucional**, donde se evalúa la organización de acciones y recursos materiales, humanos y financieros de la institución, en función de sus propósitos y fines declarados.  **(2) Docencia de Pregrado**, donde se evalúa diseño y aprobación de los programas ofrecidos, su implementación y seguimiento, y el análisis de los resultados y mecanismos para revisión y modificación de los aspectos que afecten la calidad de los programas. **(3) Docencia de Postgrado**, donde evalúa los programas de Doctorado yo Magister, los que deben: entregar grados académicos en programas sistemáticos, organizados de acuerdo a las normas de la CNA; estar vigentes, tener al menos una generación de graduados, y referirse a las principales líneas de desarrollo disciplinario de la institución. Para acreditarse en el área de **(4) Investigación**, las instituciones deben desarrollar actividades sistemáticas de búsqueda de nuevo conocimiento, que impacten sustantivamente en la disciplina, tema o área a la que pertenecen. Para acreditarse en **(5) Vinculación con el Medio**, las instituciones deben contar con mecanismos sistemáticos de vinculación con el medio -conjunto de nexos establecidos con el medio disciplinario, artístico, tecnológico, productivo o profesional, con el fin de mejorar el desempeño de las funciones institucionales, de facilitar el desarrollo académico y profesional de los miembros de la institución y su actualización o perfeccionamiento, o de cumplir con los objetivos institucionales-, que se refieran a una parte sustantiva del quehacer de la institución y que tengan un impacto significativo en su área de influencia.  
+<br>  
+
+**Acreditación de Programas:** Es voluntaria, salvo para los programas de Pedagogía y Medicina de Pregrado. En los niveles académicos de Postítulos y Postgrados sólo se acreditan programas de Sub o Especialidades Médicas u Odontológicas, Magister y Doctorado, y también es un proceso voluntario.    
+
+<br>  
+
+**Áreas OCDE:** Para clasificar los proyectos de Investigación, Desarrollo e Innovación, la OCDE define 8 áreas del conocimiento: Agricultura, Ciencias, Ciencias Sociales, Enseñanza Comercial y Derecho, Educación, Humanidades y Artes, Ingeniería, Industria y Construcción, Salud y Servicios Sociales, y Servicios. En la adaptación y clasificación de los programas de Educación Superior, para los programas que no son posibles de clasificar, se incluye la categoría "Sin área definida".    
+
+<br>  
+
+**Becas de Arancel para programas de Pregrado:** Apoyo económico que entrega el MINEDUC a estudiantes para financiar parte del costo de los estudios -cubriendo una proporción del arancel y, en algunos casos, la matrícula-, que no debe ser devuelto al finalizar los estudios. Los recursos son entregados directamente a las Instituciones de Educación Superior, no a los estudiantes. Estas becas son:    
+
+<br>  
+
+a) **Beca Bicentenario:** Financia el arancel de referencia y está dirigida a estudiantes del 70% de la población de menores ingresos, que tengan un puntaje PSU promedio de al menos 500 y que se matriculan en universidades acreditadas del Consejo de Rectores (CRUCH) o en universidades privadas acreditadas por al menos cuatro años. Incluye cupos dirigidos a personas con discapacidad, que tengan NEM igual o superior a 5,0 (en vez del requisito PSU).  
+
+<br>  
+
+b) **Beca Nuevo Milenio:** Dirigida a estudiantes de los siete primeros deciles socioeconómicos, que tengan un promedio NEM de al menos 5,0, y que se matriculen en carreras técnicas o profesionales en instituciones acreditadas por cuatro años o más. Financia una parte del arancel real, inversamente proporcional a la situación económica de los estudiantes, hasta un monto máximo. Incluye cupos dirigidos a personas con discapacidad.   
+
+<br>  
+	
+c) **Beca Juan Gómez Millas:** Financia una parte del arancel real y está dirigida a estudiantes del 70% de la población de menores ingresos, que tengan un puntaje PSU promedio de al menos 500 y que se matriculan en instituciones de educación superior acreditadas. Incluye cupos dirigidos a personas con discapacidad, que tengan NEM igual o superior a 5,0, y cupos para extranjeros provenientes de Latinoamérica o el Caribe.  
+
+<br>  
+	
+d) **Beca Vocación de Profesor:** Existen dos modalidades de la Beca Vocación de Profesor, una para estudiantes de pedagogía y una para estudiantes de licenciatura que quieran seguir un ciclo o programa de formación pedagógica. La Beca Vocación de Profesor-Pedagogías está dirigida a estudiantes que se matriculen en programas de pedagogía de instituciones acreditadas y elegibles, y no tiene requisitos socioeconómicos. Financia el arancel real y la matrícula, para los estudiantes con puntaje PSU igual o mayor a 600 (580 para el 10% de los mejores egresados de establecimientos municipales, particulares subvencionados o de administración delegada); y una asignación mensual para estudiantes con puntaje PSU igual o mayor a 700; y un semestre en el extranjero, para estudiantes con puntaje PSU igual o mayor a 720. La Beca Vocación de Profesor-Licenciatura está dirigida a estudiantes que cursan el último año de una licenciatura elegible en una institución de Educación Superior, y quieran seguir un programa de formación pedagógica elegible, y no tiene requisitos socioeconómicos. Financia el arancel real del último año de licenciatura y del programa de formación pedagógica y la matrícula, para los estudiantes con puntaje PSU igual o mayor a 600; y una asignación mensual para estudiantes con puntaje PSU igual o mayor a 700.      
+
+<br>  
+	
+e) **Beca de Excelencia Académica:** Apoyo económico que financia una parte del arancel real y está dirigida a estudiantes del 80% de la población de menores ingresos, que pertenezcan al 10% de los egresados con mejor NEM de sus establecimientos, ya sean municipales, particulares subvencionados o de administración delegada, y que se matriculan en instituciones de educación superior acreditadas.  
+
+<br>  
+	
+f) **Beca PSU:** Financia una parte del arancel real y está dirigida a estudiantes del 80% de la población de menores ingresos, egresados de establecimientos municipales, particulares subvencionados o de administración delegada, que obtengan puntaje nacional o regional en la PSU, y que se matriculan en instituciones de educación superior acreditadas.    
+
+<br>  
+	
+g) **Beca Excelencia Técnica:** Financia una parte del arancel real y está dirigida a los mejores egresados de Enseñanza Media que ingresen a carreras técnicas o profesionales, del 70% de la población de menores ingresos, y con NEM de al menos 5,0. Esta beca corresponde a cupos especiales de la Beca Nuevo Milenio.  
+
+<br>  
+	
+h) **Beca de Nivelación:** Financia el programa de nivelación académica durante el primer año de la carrera; está dirigida a estudiantes del 70% de la población de menores ingresos, egresados de establecimientos municipales, subvencionados pagados o de administración delegada que se matriculen en instituciones acreditadas. La asignación se realiza considerando el promedio de notas de Enseñanza Media, el ranking como el puntaje NEM del alumno.    
+
+<br>  
+	
+i) **Beca de Articulación:** Beneficio que financia una parte del arancel real de programas profesionales, y está dirigida a estudiantes egresados o titulados de carreras técnicas durante los cuatros años anteriores a la postulación, que quieran continuar sus estudios para obtener un título profesional, teniendo como requicito pertenecer al 70% de la población de menores ingresos junto con NEM igual o superior a 5,0.  
+
+<br>  
+
+	
+j) **Beca Hijos de Profesionales de la Educación:** Financia una parte del arancel real y está dirigida a estudiantes del 80% de la población de menores ingresos, hijos de profesionales o asistentes de la educación, que tengan contrato vigente con algún establecimiento municipal, particular subvencionado o de administración delegada, y que tengan puntaje PSU igual o superior a 500 y NEM igual o superior a 5,5.   
+
+<br>  
+
+k) **Becas de Reparación (Valech y Rettig):** Constituyen beneficios de reparación propuestos por la Comisión Nacional sobre Prisión Política y Tortura, para todas aquellas personas que han sido individualizadas como víctimas. Estas becas no tienen como requisito antecedentes socioeconómicos y financian la totalidad del arancel y matrícula para los titulares, y una proporción del arancel de referencia para los hijos o nietos de aquellos titulares que no hayan hecho uso del beneficio, en una institución de educación superior que cuente con reconocimiento oficial.  
+
+<br>  
+
+l) **Beca de Reubicación para estudiantes de la Universidad del Mar:** Beneficio que financia el arancel de referencia y está dirigida a estudiantes quienes hayan estado matriculados en la Universidad del Mar al 31 de diciembre del año 2012, y que se inscriban en una institución de educación superior acreditada.  
+
+<br>  
+
+m) **Beca de Apoyo a Damnificados:** Consiste en un beneficio para estudiantes afectados por los terremotos e incendios ocurridos en esas zonas, y financian el arancel de referencia de un programa de pregrado, por un periodo de tres años, en una institución de educación superior que cuente con reconocimiento oficial.    
+
+<br>  
+
+**CAE (Crédito con Aval del Estado):** Proporciona créditos que cubren hasta el arancel de referencia, y está dirigido a estudiantes del 80% de la población de menores ingresos (ampliable al 90% o 100% dependiendo de disponibilidad presupuestaria), con puntaje PSU igual o superior a 475 (o NEM igual o superior a 5,27 para carreras técnico-profesionales), matriculados en instituciones acreditadas. Es compatible con todos los beneficios estatales hasta un monto máximo equivalente al arancel de referencia.    
+
+<br>  
+
+**Comisión Ingresa:** Servicio público autónomo del Estado que administra el Sistema de CAE.    
+<br>  
+
+**CONICYT (Comisión Nacional de Investigación Científica y Tecnológica):** Tiene por misión contribuir al desarrollo científico y tecnológico del país, para lo cual dispone de diversos programas, entre ellos:     
+
+
+a) **Astronomía:** Tiene el objetivo de apoyar y fomentar el desarrollo de la astronomía nacional, posicionar esta disciplina como un área estratégica de desarrollo de la ciencia en nuestro país y promover a Chile como una potencia mundial en el área astronómica.       
+
+<br>  
+
+b) **FONDAP (Fondo de Financiamiento de Centros de Investigación en Áreas Prioritarias):** Su objetivo es articular la actividad de grupos multidisciplinarios de investigadores con productividad demostrada, en áreas del conocimiento de importancia para el país y donde la ciencia básica nacional ha alcanzado un alto nivel de desarrollo, para lo cual financia centros de investigación científica de excelencia por un período de 5 años, extensible en otros 5 adicionales.    
+
+<br>  
+
+c) **FONDECYT (Fondo Nacional de Desarrollo Científico y Tecnológico):** Tiene por objetivo estimular y promover el desarrollo de investigación científica y tecnológica básica, a través de financiamiento a la investigación individual en todas las áreas del conocimiento y en distintas etapas de la carrera de un investigador -Postdoctorado e Iniciación para investigadores jóvenes con grado de doctor, y Regular para investigadores con trayectoria-. Considera el Concurso Regular, Iniciación en Investigación y de Postdoctorado.      
+
+<br>  
+
+d) **FONDEF (Fondo de Fomento al Desarrollo Científico y Tecnológico):** Promueve la vinculación entre instituciones de investigación, empresas y otras entidades para la realización de proyectos de investigación aplicada y de desarrollo tecnológico de interés para el sector productivo u orientados al interés público, mediante el financiamiento de proyectos de I+D aplicada, con alto contenido científico. Se considera los concursos IDeA, Valorización de Investigación en la Universidad, Valorización de Resultados I+D, Fondef Regional y concursos Fondef Temáticos.       
+
+<br>  
+
+e) **FONDEQUIP (Fondo de Equipamiento Científico y Tecnológico):** Entrega financiamiento para la adquisición, actualización y, o acceso a equipamiento científico y tecnológico mediano y mayor para actividades de investigación. Considera el concurso Equipamiento Científico Mediano.  
+
+<br>  
+
+f) **FONIS (Fondo Nacional de Investigación y Desarrollo en Salud):** Iniciativa conjunta con Ministerio de Salud, cuyo fin es promover la investigación aplicada en salud, orientada a la generación de los conocimientos necesarios para resolver la situación de salud de los sectores más desprotegidos de la población.   
+
+<br>  
+
+g) **PCI (Programa de Cooperación Internacional):**  Incentiva la vinculación y fortalecimiento de redes mundiales, con el propósito de incorporar a la comunidad científica nacional al conocimiento de vanguardia.    
+
+<br>  
+
+h) **PIA (Programa de Investigación Asociativa):** Tiene por misión promover la articulación y asociación entre investigadores, junto con su vinculación con otros actores nacionales y/o internacionales, fomentando la creación y consolidación de grupos y centros científicos y tecnológicos. Conisdera los concursos Creación y Consolidación de Centros de I+D y concurso de Anillos de Investigación.      
+
+<br>  
+
+i) **Regional:** Tiene la misión de promover el desarrollo científico y tecnológico de las regiones de Chile, a través del trabajo conjunto con los Gobiernos Regionales y Centros de Investigación, de acuerdo a las necesidades y prioridades definidas por las regiones para su desarrollo económico y social.    
+
+<br>  
+	
+**CONICYT - Becas Nacionales:** Actualmente existente cuatro becas para iniciar o continuar estudios postgrado en universidades nacionales, en programas acreditados ante la CNA: Beca de Doctorado Nacional, Beca de Magíster Nacional, Beca de Magíster Nacional para Funcionarios del Sector Público (dirigido a funcionarios de la Administración del Estado), y Beca de Magíster Nacional para Profesionales de la Educación (dirigido a Profesionales de la Educación que se desempeñen en Establecimientos de Educación subvencionados por el Estado).   
+<br>  
+
+**CORFO (Corporación al Fomento a la Producción):** Agencia estatal a cargo de apoyar el emprendimiento, la innovación, la competitividad y diversificación productiva del país, junto con fortalecer el capital humano y las capacidades tecnológicas, a través del fomento a la inversión, la innovación y el emprendimiento. Entre las distintas líneas de trabajo de CORFO, tres son atractivas para el quehacer de las universidades: **Innovación**-financiamiento para la creación de productos, servicios o procesos originales, o bien, a mejorar sustancialmente los que ya se están desarrollando-, **Capacidades Tecnológicas**-articulación y  fortalecimiento de las capacidades de desarrollo y transferencia de tecnologías, a través de programas colaborativos que conectan a empresas, universidades y centros tecnológicos, con  una visión de largo plazo en sectores estratégicos para el país-, y **Emprendimiento** -financiamiento para ponerlas en marcha nuevas ideas de emprendedores-.   
+<br>  
+
+**Dependencia Administrativa de Establecimientos Escolares:** Los establecimientos escolares Municipales corresponden a los administrados por sostenedores públicos (Municipalidades), los Particulares Subvencionados son aquellos administrados por sostenedores privados que reciben subvención del Estado (incluyen los administrados por Corporaciones de Administración Delegada), y los Particulares Pagados son aquellos administrados por sostenedores privados que no reciben financiamiento estatal.    
+<br>  
+
+**FSCU **(Fondo Solidarios Crédito Universitario): Proporciona créditos que cubren hasta el arancel de referencia, y está dirigido a estudiantes del 80% de la población de menores ingresos, con puntaje PSU igual o superior a 475, matriculados en universidades del CRUCH. Es compatible con las becas de arancel, con excepción de las becas Bicentenario, Vocación de Profesor y de Reparación.  
+
+<br>  
+
+**Gratuidad:** Posibilidad de estudiar en educación superior sin tener que pagar arancel ni matrícula de programas de pregrado, por un tiempo igual a la duración teórica del programa (el tiempo que se espera un estudiante demore en completar el programa). Tienen derecho a Gratuidad los estudiantes que: provengan de los hogares de menores ingresos del país; se matriculen en alguna institución adscrita a Gratuidad; no posean algún grado de licenciatura terminal o título profesional previo; si cuentan con un título técnico de nivel superior, sólo podrán acceder a Gratuidad si se matriculan en una carrera conducente a título profesional con o sin licenciatura; si ya son estudiante de educación superior, no deben haber excedido la duración formal de la carrera; tengan nacionalidad chilena, o bien sean extranjeros egresados de enseñanza media en Chile y con residencia definitiva en el país. Los recursos son entregados directamente a las Instituciones de Educación Superior, no a los estudiantes.      
+
+<br>
+
+**Modalidad de Enseñanza Media:**  En tercero cuarto y medio los estudiantes deben elegir entre formación diferenciada Humanista-Científica, orientada a la profundización de áreas de la formación general de interés de los estudiantes, o Técnico-Profesional, que constituye un ámbito de preparación inicial para una vida de trabajo.  
+
+<br>  
+
+**NEM:** Puntaje asignado al promedio de Notas de Enseñanza Media. Lo define el DEMRE, organismo técnico a cargo de la Prueba de Selección Universitaria o PSU, y se utiliza junto a los resultados de este examen para establecer el puntaje de ingreso a una determinada carrera.     
+<br>  
+
+**OECD:** Organización para la Cooperación y el Desarrollo Económicos.    
+
+<br>  
+
+**Profesionales con y sin Licenciatura previa:** Los títulos profesionales acreditan una formación general para un adecuado desempeño profesional, y pueden obtenerse en una universidad o IP. Sin embargo, existe un conjunto de títulos profesionales definidos en la ley que requieren haber obtenido previamente el grado académico de licenciado, por lo que en esos casos sólo pueden ser otorgados por una universidad.  
+
+<br>  
+
+**Programa:** Para efectos de esta Ficha, se entenderá por Programa toda Carrera o Programa de Pregrado, Postítulo o Postgrado reportado en la Base de Matrícula de Educación Superior del SIES.      
+
+<br>  
+
+**PSU** (Prueba de Selección Universitaria): Batería de pruebas estandarizadas, elaborada en base al currículo de Enseñanza Media, con énfasis en contenidos y habilidades cognitivas, cuyo propósito es la selección de postulantes para la continuación de estudios universitarios. Incluye dos pruebas obligatorias -Matemática y Lenguaje y Comunicación-, y dos electivas -Ciencias (Biología, Física, Química y Técnico Profesional) e Historia, Geografía y Ciencias Sociales son electivas-. Al menos se debe rendir una de las pruebas electivas, en base a los requisitos establecidos para el ingreso de cada programa.    
+
+<br>  
+
+**SciELO** (Scientific Electronic Library Online): Es un modelo para la publicación electrónica cooperativa de revistas científicas en Internet. Especialmente desarrollado para responder a las necesidades de la comunicación científica en los países en desarrollo y particularmente de América Latina y el Caribe.    
+
+<br>  
+
+**Scopus:** Base de datos de resúmenes y citaciones de literatura revisada por pares -revistas científicas, libros y actas de conferencias-, en las disciplinas de ciencias, tecnología, medicina, ciencias sociales, artes y humanidades.    
+
+<br>  
+
+**SIES** (Servicio de Información de Educación Superior): Servicio dependiente de la División de Educación Superior del Ministerio de Educación, a cargo de desarrollar y mantener un sistema de información, que contenga los antecedentes necesarios para la adecuada aplicación de las políticas públicas destinadas al sector, para la gestión institucional y para la información pública (Ley 20.129/2006).    
+
+<br>  
+
+**Web of Science (WoS):** Base de datos de citaciones, que contiene conexiones de referencias citadas de revistas, libros y actas de conferencias revisadas por pares.      
+
+<br>  
