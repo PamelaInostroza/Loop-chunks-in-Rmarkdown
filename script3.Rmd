@@ -1,0 +1,12 @@
+
+`r paste0('## ',areas$n[na],'. ',areas$AREA[na])`  
+
+```{r ,echo=FALSE, results='asis',comment=''}
+out = NULL
+grafic<-graf[graf$Narea %in% areas[na,"Narea"],"Graph"]
+
+for (ni in as.vector(grafic)) {
+  out = c(out, knit_child('script4.Rmd'))
+}
+cat(knit(text=unlist(paste(out, collapse = '\n \n')), quiet=TRUE))
+```
