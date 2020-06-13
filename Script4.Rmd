@@ -1,0 +1,48 @@
+
+```{r , echo=FALSE, results='asis',comment=''}
+    var<-TCodes[TCodes$Graph==ni,"VARIABLE"]
+    anos<-seq(as.numeric(graf[graf$Graph==ni,"Inicio"]),as.numeric(graf[graf$Graph==ni,"Fin"]),1)
+    datgraf<-graf[graf$Graph==ni,]
+    if (is.na(graf[graf$Graph==ni,"solotabla"])) {
+       if (length(var)>7) alto<-1.9
+       else alto<-((length(var)+1)*.25)
+    } else if (length(var)>15) {
+      alto<-(16*.25)
+     } else alto<-((length(var)+3)*.25)
+    if (ni==34) alto<-((length(var)+3)*.15)
+    dfn<-data[data$VARIABLE %in% var,c("VARIABLE",paste0("X",anos))]
+    nc<-max(nchar(datgraf$ejeY2_interv),nchar(datgraf$ejeY2_max))
+    if (!is.na(datgraf$ejeY2_interv)){
+    if (regexpr("\\,[^\\,]*$",datgraf$ejeY2_interv)>0) nc<-(nc-1)
+    if (regexpr("\\.[^\\.]*$",datgraf$ejeY2_interv)>0) nc<-(nc+1)
+    }
+    if (!is.na(datgraf$grafbarra)){
+      if (nc==1) { ancho<-5.10
+      } else if (nc==2) { ancho<-5.06
+      } else if (nc==3) {ancho<-4.95
+      } else if (nc==4) {ancho<-4.89
+      } else if (nc==5) {ancho<-4.80
+      } else if (nc==6) {ancho<-4.78
+      }
+    } else ancho<-5
+    siglas<-paste(TCodes[TCodes$Graph==ni & !is.na(TCodes$expl),"ETIQUETA"],TCodes[TCodes$Graph==ni & !is.na(TCodes$expl),"ETIQUETA_Larga"],sep="=")  
+    
+if (tabla[tabla$Graph==ni,"par"]==0) cat("########")
+```  
+
+```{r ,echo=FALSE,results='asis', comment='', fig.width=5.5, fig.height=3 }
+if (is.na(graf[graf$Graph==ni,"solotabla"])) {
+  plot(ni)
+  }
+```  
+```{r ,echo=FALSE,results='asis', comment='', fig.width=ancho, fig.height=alto}
+  tablas(ni)
+```   
+
+`r paste0("####Fuente: ",graf[graf$Graph==ni,"FUENTE"],"  ")`    
+
+`r paste0("###### NOTAS: \n","###### ",paste0(graf[graf$Graph==ni,"NOTAS"],""),"  \n")`  
+
+<br>   
+
+`r if (!is.na(graf[graf$Graph==ni,"solotabla"]) & length(var)<4 | is.na(graf[graf$Graph==ni,"solotabla"]) & length(var)<3) paste0("<br>  \n<br>  \n<br>  \n<br>  \n<br>  \n<br>  \n")`  
